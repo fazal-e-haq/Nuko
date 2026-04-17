@@ -1,0 +1,36 @@
+/* SPLASH SCREEN */
+
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #e6eacf;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Logo */
+.splash .logo {
+    font-family: 'Unbounded', cursive;
+    font-size: 3rem;
+    color: #222;
+}
+
+/* Optional tagline */
+.splash .tagline {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Hidden state (for JS later) */
+.splash.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+}

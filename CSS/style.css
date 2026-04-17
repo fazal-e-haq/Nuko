@@ -1,0 +1,38 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* GLOBAL BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e6eacf;
+    color: #333;
+}
+
+/* MAIN CONTAINER */
+.container {
+    padding: 20px;
+}
+
+/* HEADER TEXT (ONLY IF STILL USED OUTSIDE NAVBAR) */
+header h1 {
+    font-family: 'Unbounded', cursive;
+    font-size: 2rem;
+}
+
+header p {
+    color: #777;
+    margin-top: 5px;
+}
+
+/* TABLE AREA WRAPPER */
+.table-area {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 400px;
+}

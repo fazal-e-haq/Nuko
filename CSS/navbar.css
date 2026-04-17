@@ -1,0 +1,34 @@
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fffdf5;
+    border-radius: 10px;
+}
+
+/* Logo */
+.navbar .logo {
+    font-family: 'Unbounded', cursive;
+    font-size: 1.5rem;
+    color: #222;
+}
+
+/* Nav links */
+.nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.nav-right a:hover {
+    color: #000;
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuko - Periodic Table</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Unbounded:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/navbar.css" />
+    <link rel="stylesheet" href="CSS/splash.css" />
+    <link rel="stylesheet" href="CSS/elements.css" />
+    <link rel="stylesheet" href="CSS/layout.css" />
+</head>
+
+<body>
+
+    <!-- Splash Screen -->
+    <div class="splash">
+        <h1 class="logo">Nuko</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="nav-left">
+                <h1 class="logo">Nuko</h1>
+            </div>
+
+            <div class="nav-right">
+                <a href="#">Home</a>
+                <a href="#">Elements</a>
+                <a href="#">About</a>
+            </div>
+        </header>
+
+        <!-- Table -->
+        <main>
+            <section class="table-area">
+                <div id="table"></div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- IMPORTANT: data FIRST, then script -->
+    <script src="JS/data.js"></script>
+    <script src="JS/script.js"></script>
+
+</body>
+
+</html>
