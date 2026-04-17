@@ -44,6 +44,81 @@ function createElement(el) {
 
 const table = document.getElementById("table");
 table.innerHTML = createLegend() + elements.map(createElement).join("");
+const splash = document.querySelector(".splash");
+const splashLogo = document.querySelector(".splash .logo");
+const splashBrand = document.querySelector(".splash-brand");
+const navbarLogo = document.querySelector(".navbar .logo");
+
+function randomSplashOffset() {
+    const x = Math.round((Math.random() * 220) - 110);
+    const y = Math.round((Math.random() * 160) - 80);
+
+    if (splashBrand) {
+        splashBrand.style.setProperty("--start-x", `${x}px`);
+        splashBrand.style.setProperty("--start-y", `${y}px`);
+    }
+}
+
+function animateSplashLogoToNavbar() {
+    if (!splash || !splashLogo || !navbarLogo || !splashBrand) {
+        return;
+    }
+
+    const splashRect = splashLogo.getBoundingClientRect();
+    const navbarRect = navbarLogo.getBoundingClientRect();
+    const movingLogo = document.createElement("h1");
+    
+    movingLogo.textContent = "Nuko";
+    movingLogo.className = "splash-transition-logo";
+    
+    // Set initial position and size to match the splash logo EXACTLY
+    movingLogo.style.left = `${splashRect.left}px`;
+    movingLogo.style.top = `${splashRect.top}px`;
+    movingLogo.style.width = `${splashRect.width}px`;
+    movingLogo.style.height = `${splashRect.height}px`;
+    movingLogo.style.fontSize = window.getComputedStyle(splashLogo).fontSize;
+    movingLogo.style.lineHeight = window.getComputedStyle(splashLogo).lineHeight;
+    movingLogo.style.transformOrigin = "top left";
+    
+    const scaleX = navbarRect.width / splashRect.width;
+    const scaleY = navbarRect.height / splashRect.height;
+    // Use average scale or just scaleX assuming aspect ratio is roughly maintained
+    const scale = navbarRect.width / splashRect.width;
+
+    splashBrand.style.opacity = "0";
+    splashBrand.style.transition = "opacity 0.25s ease";
+
+    document.body.appendChild(movingLogo);
+
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+            movingLogo.style.left = `${navbarRect.left}px`;
+            movingLogo.style.top = `${navbarRect.top}px`;
+            movingLogo.style.transform = `scale(${scale})`;
+            movingLogo.style.opacity = "0";
+        });
+    });
+
+    window.setTimeout(() => {
+        movingLogo.remove();
+    }, 1100);
+}
+
+function startSplashSequence() {
+    if (!splash) {
+        return;
+    }
+
+    randomSplashOffset();
+    document.body.classList.add("splash-active");
+
+    window.setTimeout(() => {
+        animateSplashLogoToNavbar();
+        splash.classList.add("hide");
+        document.body.classList.remove("splash-active");
+        document.body.classList.add("splash-complete");
+    }, 4000);
+}
 
 function setActiveType(type) {
     const cards = table.querySelectorAll(".element");
@@ -67,16 +142,35 @@ function setActiveType(type) {
     });
 }
 
+function setActiveElement(targetCard) {
+    const cards = table.querySelectorAll(".element");
+    const legends = table.querySelectorAll(".legend-item");
+
+    table.classList.add("is-filtering");
+
+    cards.forEach((card) => {
+        card.classList.toggle("is-match", card === targetCard);
+    });
+
+    legends.forEach((item) => {
+        item.classList.remove("is-active");
+    });
+}
+
 function openElementDetail(symbol) {
     window.location.href = `element.htm?symbol=${encodeURIComponent(symbol)}`;
 }
 
 table.addEventListener("mouseover", (event) => {
-    const card = event.target.closest(".element");
     const legend = event.target.closest(".legend-item");
+    const card = event.target.closest(".element");
 
     if (legend) {
         setActiveType(legend.dataset.filter);
+    } else if (card) {
+        setActiveElement(card);
+    } else {
+        setActiveType("");
     }
 });
 
@@ -123,3 +217,36 @@ table.addEventListener("keydown", (event) => {
         openElementDetail(card.dataset.symbol);
     }
 });
+
+const searchInput = document.getElementById("search-input");
+if (searchInput) {
+    searchInput.addEventListener("input", (event) => {
+        const query = event.target.value.toLowerCase().trim();
+        const cards = table.querySelectorAll(".element");
+
+        if (!query) {
+            table.classList.remove("is-searching");
+            cards.forEach(card => card.classList.remove("is-search-match"));
+            return;
+        }
+
+        table.classList.add("is-searching");
+
+        cards.forEach((card) => {
+            const symbol = card.dataset.symbol.toLowerCase();
+            const name = card.querySelector(".name").textContent.toLowerCase();
+            const number = card.querySelector(".number").textContent.toLowerCase();
+            
+            const isMatch = name.includes(query) || symbol.includes(query) || number === query;
+            card.classList.toggle("is-search-match", isMatch);
+        });
+    });
+}
+
+if (!sessionStorage.getItem("nukoSplashShown")) {
+    startSplashSequence();
+    sessionStorage.setItem("nukoSplashShown", "true");
+} else {
+    if (splash) splash.style.display = "none";
+    document.body.classList.add("splash-complete");
+}

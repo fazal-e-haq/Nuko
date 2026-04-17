@@ -15,12 +15,31 @@
 body {
     font-family: 'Poppins', sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(181, 218, 255, 0.35), transparent 28%),
-        linear-gradient(145deg, #edf2d8 0%, #dde6be 52%, #d4ddb1 100%);
-    color: #333;
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(98, 192, 231, 0.08), transparent 30%),
+        linear-gradient(145deg, #09131b 0%, #0d2431 44%, #15384b 78%, #3a281c 100%);
+    background-attachment: fixed;
+    color: #e0e6ed;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #09131b;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid #09131b;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .container {
@@ -46,13 +65,30 @@ header p {
 .table-area {
     margin-top: 40px;
     background: transparent;
-    padding: 4px 2px 2px;
+    padding: 4px 2px 14px;
     border-radius: 0;
     min-height: 0;
-    overflow: hidden;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     border: none;
     box-shadow: none;
     backdrop-filter: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.table-area::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-area::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
 }
 
 main {

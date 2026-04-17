@@ -11,8 +11,8 @@
     border: none;
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.45),
-        0 10px 18px rgba(55, 63, 38, 0.1),
-        0 18px 30px rgba(55, 63, 38, 0.07);
+        0 10px 18px rgba(0, 0, 0, 0.2),
+        0 18px 30px rgba(0, 0, 0, 0.15);
     transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.28s ease, opacity 0.28s ease;
     overflow: hidden;
     cursor: pointer;
@@ -25,8 +25,8 @@
     transform: perspective(900px) rotateX(6deg) rotateY(-5deg) translateY(calc(var(--row-shift) - 7px)) scale(1.03);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.62),
-        0 16px 24px rgba(46, 56, 29, 0.14),
-        0 24px 38px rgba(46, 56, 29, 0.18);
+        0 16px 24px rgba(0, 0, 0, 0.25),
+        0 24px 38px rgba(0, 0, 0, 0.3);
     filter: saturate(1.06) brightness(1.02);
 }
 
@@ -37,20 +37,50 @@
 
 #table.is-filtering .element.is-match {
     opacity: 1;
-    filter: saturate(1.14) brightness(1.05);
+    filter: saturate(1.5) brightness(1.15);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.62),
-        0 16px 28px rgba(35, 46, 24, 0.18),
-        0 22px 34px rgba(35, 46, 24, 0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 0 0 2px rgba(255, 255, 255, 0.7),
+        0 16px 28px rgba(0, 0, 0, 0.4),
+        0 22px 34px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    transform: perspective(900px) translateY(calc(var(--row-shift) - 4px)) scale(1.04);
+}
+
+#table.is-searching .element {
+    opacity: 0.15;
+    filter: grayscale(0.5);
+    pointer-events: none;
+}
+
+#table.is-searching .element.is-search-match {
+    opacity: 1;
+    filter: saturate(1.4) brightness(1.15);
+    pointer-events: auto;
+    z-index: 6;
+    transform: perspective(900px) translateY(calc(var(--row-shift) - 4px)) scale(1.05);
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.95),
+        0 0 18px 4px rgba(255, 255, 255, 0.35),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9),
+        0 16px 28px rgba(0, 0, 0, 0.4);
 }
 
 .element::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent 44%, rgba(255, 255, 255, 0.18));
-    opacity: 0.8;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.15) 100%);
+    background-size: 250% 250%;
+    background-position: 100% 100%;
+    opacity: 0.7;
     pointer-events: none;
+    transition: background-position 0.5s ease-out, opacity 0.3s ease;
+}
+
+.element:hover::before {
+    background-position: 0% 0%;
+    opacity: 1;
 }
 
 .element::after {
@@ -71,35 +101,38 @@
 
 .element .number {
     position: absolute;
-    top: 7px;
-    left: 7px;
-    font-size: 0.66rem;
-    font-weight: 600;
+    top: 6px;
+    left: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
     line-height: 1;
 }
 
 .element .mass {
     position: absolute;
-    top: 7px;
-    right: 7px;
-    font-size: 0.62rem;
-    opacity: 0.8;
+    top: 6px;
+    right: 8px;
+    font-size: 0.7rem;
+    opacity: 0.85;
     text-align: right;
     line-height: 1;
+    font-weight: 500;
 }
 
 .element .symbol {
-    font-size: 1.14rem;
-    font-weight: 700;
+    font-size: 1.45rem;
+    font-weight: 800;
     line-height: 1;
     text-align: center;
     margin-top: 2px;
     position: relative;
     z-index: 1;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 .element .name {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
     text-align: center;
     line-height: 1.1;
     margin-top: 0;

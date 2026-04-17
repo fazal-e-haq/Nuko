@@ -6,35 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nuko - Element Details</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Unbounded:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;600&family=Unbounded:wght@400;600&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="CSS/style.css" />
     <link rel="stylesheet" href="CSS/navbar.css" />
+    <link rel="stylesheet" href="CSS/detail.css" />
 </head>
 
 <body>
-    <div class="container">
+    <div class="container detail-page">
         <header class="navbar">
             <div class="nav-left">
                 <h1 class="logo">Nuko</h1>
             </div>
 
             <nav class="nav-right">
-                <a href="index.htm">Home</a>
-                <a href="index.htm#table">Elements</a>
-                <a href="#">About</a>
+                <a href="index.htm">Periodic Table</a>
+                <a class="is-current" href="element.htm">Element Details</a>
+                <a href="about.htm">About</a>
             </nav>
         </header>
 
-        <main>
-            <section class="table-area" style="display:flex; align-items:center; justify-content:center; min-height:60vh; text-align:center;">
-                <div>
-                    <h2 style="font-family:'Unbounded', cursive; font-size:2rem; margin-bottom:12px;">Element Details</h2>
-                    <p style="font-size:1rem; color:#4c5540;">This page is ready. Element details will be added next.</p>
-                </div>
+        <main class="detail-main">
+            <section class="detail-shell" id="element-detail">
+                <div class="detail-loading">Loading element details...</div>
             </section>
         </main>
     </div>
+
+    <script src="JS/data.js"></script>
+    <script src="JS/element-detail.js"></script>
 </body>
 
 </html>

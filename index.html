@@ -18,7 +18,21 @@
 
 <body>
     <div class="splash">
-        <h1 class="logo">Nuko</h1>
+        <div class="splash-particle particle-one"></div>
+        <div class="splash-particle particle-two"></div>
+        <div class="splash-particle particle-three"></div>
+        <div class="splash-brand">
+            <div class="splash-line line-one"></div>
+            <div class="splash-line line-two"></div>
+            <div class="splash-line line-three"></div>
+            <div class="splash-line line-four"></div>
+            <h1 class="logo">Nuko</h1>
+            <div class="splash-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
 
     <div class="container">
@@ -28,13 +42,17 @@
             </div>
 
             <nav class="nav-right">
-                <a href="index.htm">Periodic Table</a>
+                <a class="is-current" href="index.htm">Periodic Table</a>
                 <a href="element.htm">Element Details</a>
-                <a href="#">About</a>
+                <a href="about.htm">About</a>
             </nav>
         </header>
 
         <main>
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Search by name, symbol, or number..." aria-label="Search elements" />
+            </div>
             <section class="table-area">
                 <div id="table"></div>
             </section>
