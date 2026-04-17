@@ -1,23 +1,38 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* GLOBAL BODY */
+:root {
+    --page-bg: #e6eacf;
+    --panel-bg: rgba(255, 252, 244, 0.74);
+    --panel-stroke: rgba(255, 255, 255, 0.38);
+    --shadow-soft: 0 18px 40px rgba(56, 64, 33, 0.12);
+    --shadow-strong: 0 24px 50px rgba(56, 64, 33, 0.18);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #e6eacf;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(181, 218, 255, 0.35), transparent 28%),
+        linear-gradient(145deg, #edf2d8 0%, #dde6be 52%, #d4ddb1 100%);
     color: #333;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-/* MAIN CONTAINER */
 .container {
-    padding: 20px;
+    width: min(1600px, 100%);
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 10px 18px 8px;
+    display: flex;
+    flex-direction: column;
+    animation: page-rise 1s ease both;
 }
 
-/* HEADER TEXT (ONLY IF STILL USED OUTSIDE NAVBAR) */
 header h1 {
     font-family: 'Unbounded', cursive;
     font-size: 2rem;
@@ -28,11 +43,54 @@ header p {
     margin-top: 5px;
 }
 
-/* TABLE AREA WRAPPER */
 .table-area {
     margin-top: 40px;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    min-height: 400px;
+    background: transparent;
+    padding: 4px 2px 2px;
+    border-radius: 0;
+    min-height: 0;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+main {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+@keyframes page-rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 8px 12px 6px;
+        min-height: 100vh;
+    }
+
+    main {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 8px 8px 4px;
+    }
+
+    .table-area {
+        margin-top: 24px;
+        padding: 6px 0 0;
+    }
 }

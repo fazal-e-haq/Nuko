@@ -1,0 +1,113 @@
+.legend-panel {
+    grid-column: 7 / span 6;
+    grid-row: 1 / span 2;
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(237, 244, 248, 0.3));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.58),
+        0 10px 22px rgba(52, 61, 37, 0.08);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 4px 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.legend-item:hover,
+.legend-item.is-active {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: 0 10px 18px rgba(40, 50, 28, 0.1);
+}
+
+.legend-swatch {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    border: 2px solid rgba(28, 38, 21, 0.18);
+}
+
+.legend-label {
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: #2f4134;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.legend-item[data-filter="alkali-metal"] .legend-swatch {
+    background: #ffd6a5;
+}
+
+.legend-item[data-filter="alkaline-earth-metal"] .legend-swatch {
+    background: #fdffb6;
+}
+
+.legend-item[data-filter="transition-metal"] .legend-swatch {
+    background: #a0c4ff;
+}
+
+.legend-item[data-filter="post-transition-metal"] .legend-swatch {
+    background: #d7d9de;
+}
+
+.legend-item[data-filter="metalloid"] .legend-swatch {
+    background: #9bf6ff;
+}
+
+.legend-item[data-filter="nonmetal"] .legend-swatch {
+    background: #b8f2e6;
+}
+
+.legend-item[data-filter="halogen"] .legend-swatch {
+    background: #ffc6ff;
+}
+
+.legend-item[data-filter="noble-gas"] .legend-swatch {
+    background: #cdb4db;
+}
+
+.legend-item[data-filter="lanthanide"] .legend-swatch {
+    background: #bdb2ff;
+}
+
+.legend-item[data-filter="actinide"] .legend-swatch {
+    background: #ffadad;
+}
+
+@media (max-width: 900px) {
+    .legend-panel {
+        grid-column: 7 / span 6;
+        gap: 2px;
+        padding: 4px 5px;
+    }
+
+    .legend-item {
+        padding: 3px 4px;
+    }
+
+    .legend-label {
+        font-size: 0.38rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .legend-panel {
+        display: none;
+    }
+}
