@@ -1,10 +1,10 @@
 #table {
     display: grid;
-    grid-template-columns: repeat(18, minmax(64px, 1fr));
-    grid-auto-rows: clamp(52px, calc((100vh - 176px) / 9), 76px);
+    grid-template-columns: repeat(18, minmax(58px, 1fr));
+    grid-auto-rows: 1fr; /* Height will be determined by aspect-ratio */
     gap: 7px;
     width: 100%;
-    min-width: 1100px;
+    min-width: 900px; /* Reduced min-width to better fit laptops/tablets */
     padding: 4px 2px;
     align-content: start;
 }
@@ -51,17 +51,15 @@
 
 @media (max-width: 900px) {
     #table {
-        grid-auto-rows: 56px;
         gap: 6px;
-        min-width: 900px;
+        min-width: 800px;
     }
 }
 
 @media (max-width: 600px) {
     #table {
-        grid-auto-rows: 50px;
         gap: 4px;
-        min-width: 860px;
+        min-width: 760px;
         padding: 0 4px;
     }
 }

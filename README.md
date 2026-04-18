@@ -17,23 +17,5 @@ Nuko is a beautifully designed, modern, and highly interactive periodic table bu
 * **Vanilla JavaScript (ES6+):** Client-side logic for search, DOM manipulation, state management, and asynchronous data fetching (`fetch` API).
 * **External APIs:** Integrates seamlessly with the public Wikimedia REST API to dynamically pull in element summaries and image galleries.
 
-## 🚀 How to Run Locally
-
-Because Nuko is a purely static website, running it is incredibly simple:
-
-1. **Clone or Download** this repository to your local machine.
-2. **Start a Local Server:** While you can simply double-click `index.html`, it is highly recommended to run a local web server so that the JavaScript API calls work perfectly without CORS issues.
-   * If using **VS Code**, install the "Live Server" extension and click "Go Live".
-   * If you have **Python** installed, open a terminal in the project folder and run: `python -m http.server 8000`
-   * If you have **Node.js** installed, run: `npx http-server`
-3. **Open in Browser:** Navigate to `http://localhost:8000` (or whatever port your server provides) and start exploring!
-
-## 🌍 Sharing the Project
-
-If you want to share your local version of Nuko with others over the internet, you can use a tool like **ngrok**:
-1. Ensure your local server is running (e.g., on port 8000).
-2. Open a new terminal and run: `ngrok http 8000`
-3. Share the generated `https://...ngrok-free.app` forwarding link!
-
 ---
 *Designed to make chemistry, clearly visualized.*
